@@ -88,24 +88,31 @@ if input_method == "Manual Entry":
     st.subheader("📝 Enter Booking Info")
 
     # The inputs
-    no_of_adults = st.number_input("No. of Adults", 1, 10, 2)
-    no_of_children = st.number_input("No. of Children", 0, 10, 0)
-    no_of_weekend_nights = st.number_input("Weekend Nights", 0, 10, 1)
-    no_of_week_nights = st.number_input("Week Nights", 0, 20, 2)
-    required_car_parking_space = st.selectbox("Parking Space Required", [0, 1])
-    lead_time = st.slider("Lead Time (days)", 0, 500, 100)
-    arrival_year = st.selectbox("Arrival Year", [2017, 2018])
-    arrival_month = st.slider("Arrival Month", 1, 12, 6)
-    arrival_date = st.slider("Arrival Date", 1, 31, 15)
-    repeated_guest = st.selectbox("Repeated Guest", [0, 1])
-    no_of_previous_cancellations = st.number_input("Previous Cancellations", 0, 10, 0)
-    no_of_previous_bookings_not_canceled = st.number_input("Previous Bookings Not Canceled", 0, 10, 0)
-    avg_price_per_room = st.slider("Avg Price per Room", 0.0, 500.0, 100.0)
-    no_of_special_requests = st.number_input("Special Requests", 0, 5, 0)
+        # Use example values if selected, otherwise use defaults
+    example = example_cases[selected_example] if selected_example != "None" else {}
 
-    type_of_meal_plan = st.selectbox("Meal Plan", ['Meal Plan 1', 'Meal Plan 2', 'Meal Plan 3', 'Not Selected'])
-    room_type_reserved = st.selectbox("Room Type", ['Room_Type 1', 'Room_Type 2', 'Room_Type 3', 'Room_Type 4', 'Room_Type 5', 'Room_Type 6', 'Room_Type 7'])
-    market_segment_type = st.selectbox("Market Segment", ['Online', 'Offline', 'Corporate', 'Aviation', 'Complementary'])
+    no_of_adults = st.number_input("No. of Adults", 1, 10, example.get("no_of_adults", 2))
+    no_of_children = st.number_input("No. of Children", 0, 10, example.get("no_of_children", 0))
+    no_of_weekend_nights = st.number_input("Weekend Nights", 0, 10, example.get("no_of_weekend_nights", 1))
+    no_of_week_nights = st.number_input("Week Nights", 0, 20, example.get("no_of_week_nights", 2))
+    required_car_parking_space = st.selectbox("Parking Space Required", [0, 1], index=[0, 1].index(example.get("required_car_parking_space", 0)))
+    lead_time = st.slider("Lead Time (days)", 0, 500, example.get("lead_time", 100))
+    arrival_year = st.selectbox("Arrival Year", [2017, 2018], index=[2017, 2018].index(example.get("arrival_year", 2017)))
+    arrival_month = st.slider("Arrival Month", 1, 12, example.get("arrival_month", 6))
+    arrival_date = st.slider("Arrival Date", 1, 31, example.get("arrival_date", 15))
+    repeated_guest = st.selectbox("Repeated Guest", [0, 1], index=[0, 1].index(example.get("repeated_guest", 0)))
+    no_of_previous_cancellations = st.number_input("Previous Cancellations", 0, 10, example.get("no_of_previous_cancellations", 0))
+    no_of_previous_bookings_not_canceled = st.number_input("Previous Bookings Not Canceled", 0, 10, example.get("no_of_previous_bookings_not_canceled", 0))
+    avg_price_per_room = st.slider("Avg Price per Room", 0.0, 500.0, example.get("avg_price_per_room", 100.0))
+    no_of_special_requests = st.number_input("Special Requests", 0, 5, example.get("no_of_special_requests", 0))
+
+    type_of_meal_plan = st.selectbox("Meal Plan", ['Meal Plan 1', 'Meal Plan 2', 'Meal Plan 3', 'Not Selected'],
+                                     index=['Meal Plan 1', 'Meal Plan 2', 'Meal Plan 3', 'Not Selected'].index(example.get("type_of_meal_plan", 'Meal Plan 1')))
+    room_type_reserved = st.selectbox("Room Type", ['Room_Type 1', 'Room_Type 2', 'Room_Type 3', 'Room_Type 4', 'Room_Type 5', 'Room_Type 6', 'Room_Type 7'],
+                                      index=['Room_Type 1', 'Room_Type 2', 'Room_Type 3', 'Room_Type 4', 'Room_Type 5', 'Room_Type 6', 'Room_Type 7'].index(example.get("room_type_reserved", 'Room_Type 1')))
+    market_segment_type = st.selectbox("Market Segment", ['Online', 'Offline', 'Corporate', 'Aviation', 'Complementary'],
+                                       index=['Online', 'Offline', 'Corporate', 'Aviation', 'Complementary'].index(example.get("market_segment_type", 'Online')))
+
 
     if st.button("Predict"):
         input_dict = {
