@@ -62,7 +62,8 @@ if input_method == "Manual Entry":
     }
 }
 
-    selected_example = st.sidebar.selectbox("Or select an example case", ["None"] + list(example_cases.keys()))
+    st.subheader("🧪 Select an Example Case (optional)")
+    selected_example = st.selectbox("Choose an Example Case", ["None"] + list(example_cases.keys()))
 
     if selected_example != "None":
         example = example_cases[selected_example]
