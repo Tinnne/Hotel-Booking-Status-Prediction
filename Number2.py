@@ -1,12 +1,6 @@
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import RobustScaler
-from sklearn.model_selection import RandomizedSearchCV
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, precision_score, recall_score, f1_score
 from xgboost import XGBClassifier
 
@@ -57,7 +51,7 @@ class LoanPredictionModel:
         print("Preprocessing complete")
 
     def train_model(self):
-        self.model = RandomForestClassifier(random_state=42)
+        self.model = XGBClassifier(random_state=42)
         self.model.fit(self.x_train, self.y_train)
         print("Model training complete")
 

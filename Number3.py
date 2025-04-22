@@ -1,6 +1,5 @@
 import pandas as pd
 import joblib
-from sklearn.preprocessing import RobustScaler
 
 class LoanPredictionInference:
     def __init__(self, model_path, input_data_path, features_path, scaler_path):
@@ -41,6 +40,7 @@ class LoanPredictionInference:
         predictions = self.model.predict(self.data)
         print("Predictions complete.")
         return predictions
+
 
 if __name__ == "__main__":
     model_path = "Model/xgb_model.pkl"

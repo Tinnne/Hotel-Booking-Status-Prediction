@@ -123,4 +123,6 @@ elif input_method == "Upload CSV":
         ax.axis("equal")
         st.pyplot(fig)
 
-
+# use:
+# streamlit run Number4.py
+# to run the file locally
