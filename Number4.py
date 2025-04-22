@@ -21,6 +21,70 @@ input_method = st.sidebar.radio("Input Type", ["Manual Entry", "Upload CSV"])
 
 # --- Manual Entry Mode ---
 if input_method == "Manual Entry":
+    example_cases = {
+    "Example 1: Likely Not Canceled": {
+        "no_of_adults": 2,
+        "no_of_children": 0,
+        "no_of_weekend_nights": 1,
+        "no_of_week_nights": 2,
+        "required_car_parking_space": 1,
+        "lead_time": 10,
+        "arrival_year": 2018,
+        "arrival_month": 5,
+        "arrival_date": 12,
+        "repeated_guest": 1,
+        "no_of_previous_cancellations": 0,
+        "no_of_previous_bookings_not_canceled": 2,
+        "avg_price_per_room": 80.0,
+        "no_of_special_requests": 1,
+        "type_of_meal_plan": 'Meal Plan 1',
+        "room_type_reserved": 'Room_Type 1',
+        "market_segment_type": 'Online',
+    },
+    "Example 2: Likely Canceled": {
+        "no_of_adults": 1,
+        "no_of_children": 2,
+        "no_of_weekend_nights": 2,
+        "no_of_week_nights": 3,
+        "required_car_parking_space": 0,
+        "lead_time": 300,
+        "arrival_year": 2017,
+        "arrival_month": 11,
+        "arrival_date": 24,
+        "repeated_guest": 0,
+        "no_of_previous_cancellations": 2,
+        "no_of_previous_bookings_not_canceled": 0,
+        "avg_price_per_room": 200.0,
+        "no_of_special_requests": 0,
+        "type_of_meal_plan": 'Not Selected',
+        "room_type_reserved": 'Room_Type 4',
+        "market_segment_type": 'Offline',
+    }
+}
+
+    selected_example = st.sidebar.selectbox("Or select an example case", ["None"] + list(example_cases.keys()))
+
+    if selected_example != "None":
+        example = example_cases[selected_example]
+        no_of_adults = example["no_of_adults"]
+        no_of_children = example["no_of_children"]
+        no_of_weekend_nights = example["no_of_weekend_nights"]
+        no_of_week_nights = example["no_of_week_nights"]
+        required_car_parking_space = example["required_car_parking_space"]
+        lead_time = example["lead_time"]
+        arrival_year = example["arrival_year"]
+        arrival_month = example["arrival_month"]
+        arrival_date = example["arrival_date"]
+        repeated_guest = example["repeated_guest"]
+        no_of_previous_cancellations = example["no_of_previous_cancellations"]
+        no_of_previous_bookings_not_canceled = example["no_of_previous_bookings_not_canceled"]
+        avg_price_per_room = example["avg_price_per_room"]
+        no_of_special_requests = example["no_of_special_requests"]
+        type_of_meal_plan = example["type_of_meal_plan"]
+        room_type_reserved = example["room_type_reserved"]
+        market_segment_type = example["market_segment_type"]
+
+
     st.subheader("📝 Enter Booking Info")
 
     # The inputs
