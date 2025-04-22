@@ -14,7 +14,7 @@ def load_artifacts():
 
 model, features, scaler = load_artifacts()
 
-st.title("🏨 Hotel Booking Cancellation Predictor")
+st.title("🏨 Hotel Booking Status Predictor")
 
 st.sidebar.title("Choose Input Method")
 input_method = st.sidebar.radio("Input Type", ["Manual Entry", "Upload CSV"])
@@ -23,6 +23,7 @@ input_method = st.sidebar.radio("Input Type", ["Manual Entry", "Upload CSV"])
 if input_method == "Manual Entry":
     st.subheader("📝 Enter Booking Info")
 
+    # The inputs
     no_of_adults = st.number_input("No. of Adults", 1, 10, 2)
     no_of_children = st.number_input("No. of Children", 0, 10, 0)
     no_of_weekend_nights = st.number_input("Weekend Nights", 0, 10, 1)
